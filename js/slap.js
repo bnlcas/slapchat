@@ -1,4 +1,4 @@
-var n_frames = 17; // Wow, so many images for such a short clip
+var n_frames = 16; // Wow, so many images for such a short clip
 var frames = [];
 for(var i = 1; i < n_frames + 1; i++) {
   var filename = "slap_" + i.toString() + ".jpg"
@@ -65,16 +65,8 @@ const hands = new Hands({locateFile: (file) => {
 hands.setOptions({
   maxNumHands: 1,
   modelComplexity: 1,
-  minDetectionConfidence: 0.5,
-  minTrackingConfidence: 0.5
-});
-hands.onResults(onResults);
-
-hands.setOptions({
-  maxNumHands: 1,
-  modelComplexity: 1,
-  minDetectionConfidence: 0.5,
-  minTrackingConfidence: 0.5
+  minDetectionConfidence: 0.3,
+  minTrackingConfidence: 0.1
 });
 
 var startButton = document.getElementById("start_button");
