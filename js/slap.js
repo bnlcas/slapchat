@@ -10,10 +10,10 @@ for(var i = 1; i < n_frames + 1; i++) {
 var canv;
 var context;
 var canSlap = false;
+var startButton;
 
 function LoadSlap()
 {
-  var startButton = document.getElementById("start_button");
   startButton.remove();
   var nananan = document.getElementById("nanananana");
   nananan.play()
@@ -43,6 +43,7 @@ function MousePositionSlap()
 
 const videoElement = document.getElementsByClassName('input_video')[0];
 
+
 var handResults;
 function onResults(results) {
   handResults = results;
@@ -69,11 +70,15 @@ hands.setOptions({
 });
 hands.onResults(onResults);
 
-const camera = new Camera(videoElement, {
-  onFrame: async () => {
-    await hands.send({image: videoElement});
-  },
-  width: 1280,
-  height: 720
+hands.setOptions({
+  maxNumHands: 1,
+  modelComplexity: 1,
+  minDetectionConfidence: 0.5,
+  minTrackingConfidence: 0.5
 });
+
+var startButton = document.getElementById("start_button");
+startButton.addEventListener("click", LoadSlap);
+
+
 camera.start();
