@@ -68,9 +68,16 @@ hands.setOptions({
   minDetectionConfidence: 0.3,
   minTrackingConfidence: 0.1
 });
+hands.onResults(onResults);
 
 var startButton = document.getElementById("start_button");
 startButton.addEventListener("click", LoadSlap);
 
-
+const camera = new Camera(videoElement, {
+  onFrame: async () => {
+    await hands.send({image: videoElement});
+  },
+  width: 1280,
+  height: 720
+});
 camera.start();
