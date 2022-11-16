@@ -3,7 +3,7 @@ var frames = [];
 for(var i = 1; i < n_frames + 1; i++) {
   var filename = "slap_" + i.toString() + ".jpg"
   var frame = new Image;
-  frame.src = '../Assets/Images/' + filename;
+  frame.src = './Assets/Images/' + filename;
   frames.push(frame);
 }
 
